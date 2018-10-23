@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block title%}
+Login
+{% endblock title %}
+
+{% block content %}
+
+<form method="post" action="" style="color:azure">
+    {% csrf_token %}
+
+    {{ form | crispy }}
+
+    <center><button type="submit" class="btn btn-primary">Login</button></center>
+
+</form>
+
+{% endblock content %}

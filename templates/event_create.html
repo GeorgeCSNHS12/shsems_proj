@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block title%}
+Create New Event
+{% endblock title %}
+
+{% block content %}
+
+<form method="post" action="" style="color:azure">
+    {% csrf_token %}
+
+    {{ form | crispy }}
+
+    <button type="submit" class="btn btn-primary">Create</button>
+
+</form>
+
+{% endblock content %}
