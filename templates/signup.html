@@ -7,14 +7,22 @@ Sign Up
 {% endblock title %}
 
 {% block content %}
+<div class="card">
+        <div class="card-header">
+          Create New Event
+        </div>
+        <div class="card-body">
+          
+            <form method="post" action="" style="color:azure">
+            {% csrf_token %}
+    
+            {{ form | crispy }}
+    
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+    
+            </form>
+        </div>
+</div>
 
-<form method="post" action="" style="color:azure">
-    {% csrf_token %}
-
-    {{ form | crispy }}
-
-    <button type="submit" class="btn btn-primary">Sign Up</button>
-
-</form>
 
 {% endblock content %}
