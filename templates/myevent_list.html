@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block title %} All Events {% endblock title %} {% block content %}
+
+<div class="card mt-2 text-monospace" style="background-color: darkslategray">
+    <div class="card-header d-flex w-100 justify-content-between" style="background-color:slategray">
+        <h3><strong>Created Events</strong></h3>
+        <a href="{% url 'event_create' %}" class="btn btn-success">Create New</a>
+    </div>
+
+    <div class="card-body">
+        <div class="card-columns">
+            {% for event in event_list %}
+            <div class="card" style="background-color:darkslategray">
+                <div class="card-header" style="background-color:slategray">
+                    <strong>{{ event.name }}</strong>
+                </div>
+
+                <div class="card-body">
+                    <p class="card-text"><strong>{{ event.date_from }} - {{ event.date_to }}</strong></p>
+                    <p class="card-text">{{ event.venue }}</p>
+                    <p class="card-text">{{ event.description | slice:"0:100"}} ...</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'registration_list' event.pk %}">
+                        <button class="btn btn-sm btn-primary">Show Participant</button>
+                    </a>
+                    <a href="{% url 'event_update' event.pk %}">
+                        <button class="btn btn-sm btn-success">Update Event</button>
+                    </a>
+                    <a href="{% url 'event_detail' event.pk %}" class="mt-2">
+                        <button class="btn btn-sm btn-info">More Details</button>
+                    </a>
+                </div>
+
+            </div>
+
+            {% empty %}
+            <a href="#!" class="mt-4 list-group-item list-group-item-action list-group-item-warning">
+                There Are No Events to Display.
+            </a>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
