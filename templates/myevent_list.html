@@ -20,17 +20,20 @@
                     <p class="card-text">{{ event.description | slice:"0:100"}} ...</p>
                 </div>
                 <div class="card-footer">
-                    <a href="{% url 'registration_list' event.pk %}">
-                        <button class="btn btn-sm btn-primary">Show Participant</button>
-                    </a>
-                    <a href="{% url 'event_update' event.pk %}">
-                        <button class="btn btn-sm btn-success">Update Event</button>
-                    </a>
-                    <a href="{% url 'event_detail' event.pk %}" class="mt-2">
-                        <button class="btn btn-sm btn-info">More Details</button>
-                    </a>
+                    <div class="container">
+                        <a href="{% url 'registration_list' event.pk %}">
+                            <button class="btn btn-sm btn-primary">Show Participant</button>
+                        </a>
+                        <a href="{% url 'event_update' event.pk %}">
+                            <button class="btn btn-sm btn-success">Update Event</button>
+                        </a>
+                    </div>
+                    <div class="container mt-2">
+                        <a href="{% url 'event_detail' event.pk %}">
+                            <button class="btn btn-sm btn-info">More Details</button>
+                        </a>
+                    </div>
                 </div>
-
             </div>
 
             {% empty %}
