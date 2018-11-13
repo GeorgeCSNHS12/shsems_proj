@@ -50,4 +50,3 @@ class EventUpdateView(LoginRequiredMixin, UpdateView):
             ]
 
     login_url = "login"
-

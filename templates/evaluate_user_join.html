@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Evaluate User
+{% endblock title %}
+
+{% block content %}
+
+<center>
+    <a href="{% url 'event_list' %}" class="mt-4 list-group-item list-group-item-action list-group-item-warning">
+        You already joined this event! Please click this warning message to go back.
+    </a>
+</center>
+
+{% endblock content %}

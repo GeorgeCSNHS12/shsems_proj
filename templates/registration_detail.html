@@ -5,13 +5,13 @@ Registration Detail
 {% endblock title %}
 
 {% block content %}
-    <div class="card" style="background-color:darkslategray">
-        <div class="card-header">
-            <h4><strong>Registration Details</strong></h4>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><strong>{{ registration.event }}</strong></h5>
-          <p class="card-text">Status: {{ registration.status }}</p>
-        </div>
+<div class="card" style="background-color:darkslategray">
+    <div class="card-header">
+        <h4><strong>Registration Details</strong></h4>
     </div>
+    <div class="card-body">
+        <h5 class="card-title"><strong>{{ registration.event }}</strong></h5>
+        <p class="card-text">Status: {{ registration.status }}</p>
+    </div>
+</div>
 {% endblock content %}
