@@ -7,25 +7,48 @@ Attendance Summary
 {% block content %}
 <div class="row">
     <div class="col-lg-12 mx-auto mt-3">
-        <div class="card" style="background-color:darkslategray; color:azure">
-            <div class="card-header">
-                <div class="d-flex w-100 justify-content-between">
-                    <h4>Attendance Summary{{attendance_sum}}</h4>
+        <div class="card" id="body_comp">
+            <div class="card-body">
+                <div class="card-header">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h4>Attendance Summary</h4>
+                    </div>
                 </div>
-            </div>
+    
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Time In</th>
+                            <th class="text-center">Time Out</th>
+                            <th class="text-center">Attendance Key</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form id="attendance_form" method="post" action="/shsems/activities/my/7/attendance/process/">
+                            <input type='hidden' name='csrfmiddlewaretoken' value='pxpKWW8Jc57yyGZ4SoXmfSyb7iz7rNsNNSirpGuIaZk6jLEqEKIOG1RagyHVkEDA' />
+                        </form>
+                        {% for person in attendance_summary %}
+                            <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td class="text-center">{{ person.for_date }}</td>
+                            <td class="text-center">{{ person.time_arrived }}</td>
+                            <td class="text-center">{{ person.time_left }}</td>
+                            <td class="text-center"><input form="attendance_form" type="text" name="attendance_key">
 
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                    <th class="text-center">#</th>
-                    <th class="text-center">Date</th>
-                    <th class="text-center">Time In</th>
-                    <th class="text-center">Time Out</th>
-                    <th class="text-center">Attendance Key</th>
-                    <th class="text-center">Actions</th>
-                    </tr>
-                </thead>
-            </table>
+                            <td class="text-center">
+                                <input  form="attendance_form" type="hidden" name="attendance_pk" value="17" /> 
+                                <button form="attendance_form" name="time_in_17" type="submit" value="0" class="btn btn-sm btn-disabled">In</button>
+                                <button form="attendance_form" name="time_out_17"  type="submit" value="0"  class="btn btn-sm btn-disabled">Out</button>
+                            </td> 
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

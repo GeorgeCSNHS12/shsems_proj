@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block title %} All Events {% endblock title %} {% block content %}
 
-<div class="card mt-2 text-monospace" style="background-color: darkslategray">
-    <div class="card-header d-flex w-100 justify-content-between" style="background-color:slategray">
+<div class="card mt-2" id="head_comp">
+    <div class="card-header d-flex w-100 justify-content-between" id="body_comp">
         <h3><strong>Created Events</strong></h3>
         <a href="{% url 'event_create' %}" class="btn btn-success">Create New</a>
     </div>
@@ -11,9 +11,9 @@
 
         <div class="card-columns">
             {% for event in event_list %}
-            <div class="card" style="background-color:darkslategray">
-                <div class="card-header" style="background-color:slategray">
-                    <strong>{{ event.name }}</strong>
+            <div class="card" id="body_comp">
+                <div class="card-header" id="body_comp">
+                    <h3><small>{{ event.name }}</small></h3>
                 </div>
 
                 <div class="card-body">
@@ -21,18 +21,19 @@
                     <p class="card-text">{{ event.venue }}</p>
                     <p class="card-text">{{ event.description | slice:"0:100"}} ...</p>
                 </div>
-                <div class="card-footer">
+                <div class="card" id="body_comp">
                     <div class="container">
                         <a href="{% url 'registration_list' event.pk %}">
                             <button class="btn btn-sm btn-primary">Show Participant</button>
                         </a>
-                        <a href="{% url 'event_update' event.pk %}">
-                            <button class="btn btn-sm btn-success">Update Event</button>
-                        </a>
-                    </div>
-                    <div class="container mt-2">
                         <a href="{% url 'event_detail' event.pk %}">
                             <button class="btn btn-sm btn-info">More Details</button>
+                        </a>
+                        
+                    </div>
+                    <div class="container mt-2">
+                        <a href="{% url 'event_update' event.pk %}">
+                            <button class="btn btn-sm btn-success">Update Event</button>
                         </a>
                         <a href="{% url 'update_attendance' event.pk %}">
                             <button class="btn btn-sm btn-warning">Add Attendance</button>
@@ -50,7 +51,5 @@
         {% endif %}
     </div>
 </div>
-
-
 
 {% endblock content %}

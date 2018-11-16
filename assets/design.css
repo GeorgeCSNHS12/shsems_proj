@@ -1,0 +1,16 @@
+body{
+    background-color: gray;
+    color: black;
+    font-family: 'Arvo', courier, serif;
+    background-image: url('images/full.jpg');
+}
+
+#head_comp{
+    background-color: transparent;
+    color: black;
+}
+
+#body_comp{
+    background-color: black;
+    color: azure;
+}

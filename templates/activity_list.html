@@ -6,36 +6,41 @@ Registered Events
 
 {% block content %}
 
-<div class="card mt-2 text-monospace" style="background-color: darkslategray">
-    <div class="card-header d-flex w-100 justify-content-between" style="background-color:slategray">
+<div class="card mt-2" id="head_comp">
+    <div class="card-header d-flex w-100 justify-content-between" id="body_comp">
         <h3><strong>Registered Events</strong></h3>
     </div>
 
-    {% if activity_list %}
-    <div class="card-columns mt-2">
+    <div class="card-body">
+        {% if activity_list %}
+        <div class="card-columns mt-2">
 
-        {% for activities in activity_list %}
-        <div class="card" style="background-color:darkslategray">
-            <div class="card-body">
-                <h4>{{ activities.event }}</h4>
-                <p class="card-text mb-2"><small>{{ activities.event.date_from }} - {{ activities.event.date_to }}</small></p>
-                <p class="card-text mb-2">{{ activities.event.description | slice:"0:70"}} ...</p>
-                <hr style="background-color:azure">
-                <p class="card-text mb-2"><small>Event Creator: {{ activities.event.creator }} </small></p>
-            </div>
+            {% for activities in activity_list %}
+            <div class="card" id="body_comp">
+                <div class="card-body">
+                    <h4>{{ activities.event }}</h4>
+                    <p class="card-text mb-2"><small>{{ activities.event.date_from }} - {{ activities.event.date_to }}</small></p>
+                    <p class="card-text mb-2">{{ activities.event.description | slice:"0:70"}} ...</p>
+                    <hr style="background-color:azure">
+                    <p class="card-text mb-2"><small>Event Creator: {{ activities.event.creator }} </small></p>
+                </div>
 
-            <div class="card-footer">
-                <a href="{% url 'attendance_summary' activities.pk %}" style="margin-left:40%"><button class="btn btn-outline btn-success btn-sm">View Attendance Summary</button></a>
+                <div class="card-footer">
+                    <a href="{% url 'attendance_summary' activities.pk %}" style="margin-left:30%"><button class="btn btn-outline btn-success btn-sm">View
+                            Attendance Summary</button></a>
+                </div>
             </div>
+            {% endfor %}
+
+
+            {% else %}
+            <a href="{% url 'home' %}" class="mt-4 list-group-item list-group-item-action list-group-item-warning">
+                There Are No Activities to Display.
+            </a>
+            {% endif %}
+
         </div>
-        {% endfor %}
 
     </div>
-
-    {% else %}
-    <a href="{% url 'home' %}" class="mt-4 list-group-item list-group-item-action list-group-item-warning">
-        There Are No Activities to Display.
-    </a>
-    {% endif %}
 </div>
 {% endblock content %}

@@ -2,16 +2,16 @@
 {% load crispy_forms_tags %}
 
 {% block title%} Join Event {% endblock title %} {% block content %}
-<div class="card" style="background-color:darkslategray">
+<div class="card" id="body_comp">
     <div class="card-header">
         Add Attendance
     </div>
     <div class="card-body">
 
-        <form method="post" action="" enctype="multipart/form-data" style="color:azure">
+        <form method="post" action="" enctype="multipart/form-data">
             {% csrf_token %} {{ form | crispy }}
 
-            <button type="submit" class="btn btn-primary">Add</button>
+            <center><button type="submit" class="btn btn-primary" style="width:100%">Add</button></center>
         </form>
     </div>
 </div>

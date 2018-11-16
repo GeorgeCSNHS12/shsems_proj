@@ -8,13 +8,13 @@ Login
 {% block content %}
 
 {% if not user.is_authenticated %}
-    <form method="post" action="" style="color:azure">
-        {% csrf_token %}
+<form method="post" action="" style="color:black">
+    {% csrf_token %}
 
-        {{ form | crispy }}
+    {{ form | crispy }}
 
-        <center><button type="submit" class="btn btn-primary">Login</button></center>
-    </form>
+    <center><button type="submit" class="btn btn-primary" style="width:100%">Login</button></center>
+</form>
 {% endif %}
-    
+
 {% endblock content %}

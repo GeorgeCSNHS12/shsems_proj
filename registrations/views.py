@@ -38,7 +38,7 @@ class RegistrationListView (TemplateView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
-        qs = Registration.objects.all()
+        qs = Registration.objects.filter(event = self.kwargs['event_pk'])
         data ["registration_list"] = qs
         return data
 
@@ -56,10 +56,9 @@ class MyActivitiesListView(LoginRequiredMixin, ListView):
 class CreateAttendanceView(CreateView):
     model = Attendance
 
-    fields = ['for_date']
+    fields = ['for_date', 'registration']
 
     template_name = "create_attendance.html"
 
     def form_valid(self, form):
-        form.instance.registration = self.request.user
         return super().form_valid(form)

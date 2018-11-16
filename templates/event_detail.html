@@ -6,12 +6,12 @@ Event Detail
 
 {% block content %}
 
-<div class="card mt-2" style="background-color:darkslategray">
+<div class="card mt-2" id="body_comp">
     <div class="card-header">
         <h4><strong>Event Details</strong></h4>
     </div>
     <div class="card-body">
-        <h5 class="card-title"><strong>{{ event.name }}</strong></h5>
+        <h5 class="card-title"><strong>{{ event }}</strong></h5>
         <p class="card-text">Schedule: {{ event.date_from }} - {{ event.date_to }}</p>
         <p class="card-text">Venue: {{ event.venue }}</p>
         <p class="card-text">{{ event.description }}</p>
@@ -20,7 +20,11 @@ Event Detail
         <!--<a href="#!"><button class="btn btn-primary">Show Participants</button></a> {% url 'join_event' event.pk %}-->
 
         <center>
-            <a href="{% url 'join_event' event.pk %}"><button class="btn btn-success">Join Event</button></a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'join_event' event.pk %}"><button class="btn btn-success">Join Event</button></a>
+            {% else %}
+                <a href="{% url 'login' %}"><button class="btn btn-success">Join Event</button></a>
+            {% endif %}
         </center>
 
     </div>

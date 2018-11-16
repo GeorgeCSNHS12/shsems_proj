@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="card mt-2 text-monospace" style="background-color: darkslategray; color: azure">
+<div class="card mt-2" id="head_comp">
     <div class="card-header">
         <h3><strong>All Participants</strong></h3>
     </div>
@@ -11,8 +11,8 @@
         <div class="mt-4 list-group">
             {% for registration in registration_list %}
 
-            <a href="{% url 'registration_detail' registration.pk %}" class="list-group-item list-group-item-action flex-column align-items-start"
-                style="background-color:darkslategray; color:azure">
+            <a href="{% url 'registration_detail' registration.pk %}" class="list-group-item list-group-item-action flex-column align-items-start mb-2"
+                id="body_comp">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1"><strong>Username: {{ registration.participant }}</strong></h5>
                     <small>{{ registration.status }}</small>
