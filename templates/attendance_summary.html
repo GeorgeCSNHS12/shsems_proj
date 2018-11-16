@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Attendance Summary
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12 mx-auto mt-3">
+        <div class="card" style="background-color:darkslategray; color:azure">
+            <div class="card-header">
+                <div class="d-flex w-100 justify-content-between">
+                    <h4>Attendance Summary{{attendance_sum}}</h4>
+                </div>
+            </div>
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Date</th>
+                    <th class="text-center">Time In</th>
+                    <th class="text-center">Time Out</th>
+                    <th class="text-center">Attendance Key</th>
+                    <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

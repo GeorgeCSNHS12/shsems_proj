@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'events',
     'users',
     'registrations',
+    'attendances',
     'crispy_forms'
 ]
 

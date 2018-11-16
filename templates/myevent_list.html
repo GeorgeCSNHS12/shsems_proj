@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="card-body">
-                    <p class="card-text"><strong>{{ event.date_from }} - {{ event.date_to }}</strong></p>
+                    <p class="card-text">{{ event.date_from }} - {{ event.date_to }}</p>
                     <p class="card-text">{{ event.venue }}</p>
                     <p class="card-text">{{ event.description | slice:"0:100"}} ...</p>
                 </div>
@@ -33,6 +33,9 @@
                     <div class="container mt-2">
                         <a href="{% url 'event_detail' event.pk %}">
                             <button class="btn btn-sm btn-info">More Details</button>
+                        </a>
+                        <a href="{% url 'update_attendance' event.pk %}">
+                            <button class="btn btn-sm btn-warning">Add Attendance</button>
                         </a>
                     </div>
                 </div>

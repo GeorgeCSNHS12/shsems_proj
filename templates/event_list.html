@@ -9,14 +9,14 @@
     <div class="card-body">
         <div class="mt-4 list-group">
             {% for event in event_list %}
-            <div class="card mb-5" style="background-color:darkslategray">
+            <div class="card mb-2" style="background-color:darkslategray">
                 <a href="" class="list-group-item list-group-item-action flex-column align-items-start" style="background-color:darkslategray; color:azure">
                     <div class="d-flex w-100 justify-content-between">
                         <h4 class="mb-1"><strong>{{ event.name }}</strong></h4>
                         <small>{{ event.date_from }} - {{ event.date_to }} at {{ event.venue }}</small>
                     </div>
                     <p>{{ event.description }}</p>
-                    <a href="{% url 'event_detail' event.pk %}"><button class="btn btn-info" style="float:right;margin-right:5%">View
+                <a href="{% url 'event_detail' event.pk %}"><button class="btn btn-info" style="float:right;margin-right:5%">View
                             Details</button></a>
                 </a>
             </div>

@@ -7,6 +7,7 @@ from django.views.generic import CreateView, DetailView, TemplateView, ListView
 from .models import Registration
 from users.models import Participant
 from events.models import Event
+from attendances.models import Attendance
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -51,3 +52,14 @@ class MyActivitiesListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         qs = super().get_queryset()
         return qs.filter(participant = self.request.user)
+
+class CreateAttendanceView(CreateView):
+    model = Attendance
+
+    fields = ['for_date']
+
+    template_name = "create_attendance.html"
+
+    def form_valid(self, form):
+        form.instance.registration = self.request.user
+        return super().form_valid(form)
